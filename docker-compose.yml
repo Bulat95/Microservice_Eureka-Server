@@ -1,0 +1,16 @@
+services:
+
+  app:
+    image: 'eureka-server-app'
+    build: ./
+    container_name: 'eureka-server-app'
+
+    networks:
+      - db-network
+    ports:
+      - 8761:8761
+    environment:
+      eureka.client.serviceUrl.defaultZone: http://eureka-server-app:8761/eureka
+
+networks:
+  db-network:
